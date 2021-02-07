@@ -25,3 +25,8 @@ Successfully designed Android app UI and Deployed the app
 -Introduce Enas to all platforms available to target a large audience.
 -Planning to make a hardware device with a button that sends quick SOS message
 -Prepare a Machine Learning model that automatically detects what problem the user is facing when button is pressed, and sends the SOS message describing the current situation, **INCLUDING AUDIO RECORDING OF ARGUMENTS**
+
+Try out Links:
+1. https://www.figma.com/file/DbMUKhz3TiaTAYKnbwC2w9/ENAS?node-id=2%3A40
+2. https://devpost.com/software/enas?ref_content=user-portfolio&ref_feature=in_progress
+3.
