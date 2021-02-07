@@ -1,0 +1,61 @@
+public class MainActivity extends ActionBarActivity {
+    private GoogleMap map;
+    UiSettings mapSettings;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+
+        if (map != null) {
+           // map.addMarker(new MarkerOptions().position(myLocation).title("Start"));
+            map.setMyLocationEnabled(true);
+            mapSettings = map.getUiSettings();
+            mapSettings.setScrollGesturesEnabled(true);
+            mapSettings.setZoomControlsEnabled(true);
+        }
+    }
+}
+Xml code:
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.google.android.gms.maps.MapFragment" />
+
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+int PLACE_PICKER_REQUEST = 1;
+PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
+UI-Pick
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+  if (requestCode == PLACE_PICKER_REQUEST) {
+    if (resultCode == RESULT_OK) {
+        Place place = PlacePicker.getPlace(data, this);
+        String toastMsg = String.format("Place: %s", place.getName());
+        Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
+    }
+  }
+}
